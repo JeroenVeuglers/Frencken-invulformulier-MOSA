@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scholieren Formulier</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@^3.0/dist/tailwind.min.css">
+</head>
+<body class="flex items-center justify-center min-h-screen bg-gray-100">
+    <div class="bg-white p-6 rounded-2xl shadow-lg max-w-md w-full">
+        <h2 class="text-2xl font-bold mb-4">Scholieren Formulier</h2>
+        <form id="scholierenForm" class="space-y-4">
+            <input type="text" name="name" placeholder="Naam" class="w-full p-2 border rounded" required>
+            <input type="email" name="email" placeholder="E-mail" class="w-full p-2 border rounded" required>
+            <input type="tel" name="phone" placeholder="Mobiel" class="w-full p-2 border rounded" required>
+            <input type="text" name="city" placeholder="Woonplaats" class="w-full p-2 border rounded" required>
+            <input type="text" name="study" placeholder="Richting Studie" class="w-full p-2 border rounded" required>
+            <input type="number" name="age" placeholder="Leeftijd" class="w-full p-2 border rounded" required>
+            <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Verstuur</button>
+        </form>
+
+        <div id="output" class="mt-4 hidden">
+            <h3 class="text-<form action="/submit" method="post">
+  <label for="name">Naam:</label>
+  <input type="text" id="name" name="name" required><br><br>
+
+  <label for="email">E-mail:</label>
+  <input type="email" id="email" name="email" required><br><br>
+
+  <label for="mobile">Mobiel:</label>
+  <input type="tel" id="mobile" name="mobile" required><br><br>
+
+  <label for="city">Woonplaats:</label>
+  <input type="text" id="city" name="city" required><br><br>
+
+  <label for="study_direction">Richting Studie:</label>
+  <input type="text" id="study_direction" name="study_direction" required><br><br>
+
+  <label for="age">Leeftijd:</label>
+  <input type="number" id="age" name="age" required><br><br>
+
+  <label for="num_in_nl">Aantal in Nederland:</label>
+  <input type="number" id="num_in_nl" name="num_in_nl" required><br><br>
+
+  <label for="num_worldwide">Aantal wereldwijd:</label>
+  <input type="number" id="num_worldwide" name="num_worldwide" required><br><br>
+
+  <input type="submit" value="Verzenden">
+</form>
+lg font-semibold">Ingevulde gegevens:</h3>
+            <div id="outputContent" class="mt-2"></div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('scholierenForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const outputContent = document.getElementById('outputContent');
+            outputContent.innerHTML = '';
+            formData.forEach((value, key) => {
+                outputContent.innerHTML += `<p><strong>${key}:</strong> ${value}</p>`;
+            });
+            document.getElementById('output').classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>
